@@ -9,7 +9,7 @@ phases:
     commands:
       - echo "Copiando archivos a la carpeta de distribución..."
       - mkdir -p dist
-      - cp -r * dist/
+      - find . -type f ! -name ".*" -exec cp --parents {} dist/ \;
 
   post_build:
     commands:
