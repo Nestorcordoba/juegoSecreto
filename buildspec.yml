@@ -3,18 +3,17 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "No hay dependencias que instalar para HTML puro."
+      - echo "No hay dependencias que instalar para un sitio estático."
 
   build:
     commands:
-      - echo "Copiando archivos..."
+      - echo "Copiando archivos a la carpeta de distribución..."
       - mkdir -p dist
       - cp -r * dist/
 
   post_build:
     commands:
-      - echo "Subiendo archivos a S3..."
-      - aws s3 sync dist/ s3://Melasticbeanstalk-us-east-2-494905764953/ --delete
+      - echo "No hay bucket de S3 configurado. Omitting deployment step."
 
 artifacts:
   files:
