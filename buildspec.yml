@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "No hay dependencias que instalar para HTML puro."
+
+  build:
+    commands:
+      - echo "Copiando archivos..."
+      - mkdir -p dist
+      - cp -r * dist/
+
+  post_build:
+    commands:
+      - echo "Subiendo archivos a S3..."
+      - aws s3 sync dist/ s3://Melasticbeanstalk-us-east-2-494905764953/ --delete
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
